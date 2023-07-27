@@ -1,3 +1,4 @@
+// Defines the Products functions and its data array and sets up the seeding data. //
 const { Product } = require('../models');
 
 const productData = [

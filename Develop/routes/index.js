@@ -1,3 +1,4 @@
+// Sets up an express router for the web server. //
 const router = require('express').Router();
 const apiRoutes = require('./api');
 

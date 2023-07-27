@@ -1,3 +1,4 @@
+// Seeds data from the tables, does so in a specific order to maintain the relationships between the tables. //
 const seedCategories = require('./category-seeds');
 const seedProducts = require('./product-seeds');
 const seedTags = require('./tag-seeds');

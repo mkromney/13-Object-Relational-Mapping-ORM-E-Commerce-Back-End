@@ -1,5 +1,7 @@
+// Requires .env for security on github. //
 require('dotenv').config();
 
+// Requires sequelize and sets up a sequelize instance for connection to the databases. // 
 const Sequelize = require('sequelize');
 
 const sequelize = process.env.JAWSDB_URL

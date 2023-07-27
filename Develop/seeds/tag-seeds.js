@@ -1,3 +1,4 @@
+// Defines the Tags functions and its data array and sets up the seeding data. //
 const { Tag } = require('../models');
 
 const tagData = [

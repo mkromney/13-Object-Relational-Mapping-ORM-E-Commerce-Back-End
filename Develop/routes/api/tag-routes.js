@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
-// The `/api/tags` endpoint
+// The `/api/tags` endpoint. //
 
 router.get('/', async (req, res) => {
   try {
-    // Find all tags
-    // Be sure to include its associated Product data
+    // Finds all tags. //
+    // Includes its associated Product data. //
     const tags = await Tag.findAll({
       include: [Product],
     });
@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    // Find a single tag by its `id`
-    // Be sure to include its associated Product data
+    // Finds a single tag by its `id`. //
+    // Includes its associated Product data. //
     const tag = await Tag.findByPk(req.params.id, {
       include: [Product],
     });
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    // Create a new tag
+    // Creates a new tag. //
     const newTag = await Tag.create(req.body);
     res.status(201).json(newTag);
   } catch (err) {
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    // Update a tag's name by its `id` value
+    // Updates a tag's name by its `id` value. //
     const updatedTag = await Tag.update(
       { tag_name: req.body.tag_name },
       { where: { id: req.params.id } }
@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    // Delete a tag by its `id` value
+    // Deletes a tag by its `id` value. //
     const deletedTag = await Tag.destroy({
       where: { id: req.params.id },
     });

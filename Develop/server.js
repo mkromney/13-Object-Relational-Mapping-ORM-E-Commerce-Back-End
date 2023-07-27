@@ -1,11 +1,11 @@
-
+// Sets up a web server that connects to the relevant databases. //
 const nodemon = require('nodemon');
 
 const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection')
-// import sequelize connection
 
+// Imports sequelize connection. //
 const app = express();
 const PORT = process.env.PORT || 3001;
 

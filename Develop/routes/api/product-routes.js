@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
-// The `/api/products` endpoint?????
+// The `/api/products` endpoint, //
 
-// get all products
+// Gets all products. //
 router.get('/', async (req, res) => {
   try {
-    // Find all products and include their associated Category and Tag data
+    // Finds all products and includes their associated Category and Tag data. //
     const allProducts = await Product.findAll({
       include: [Category, { model: Tag, through: ProductTag }],
     });
@@ -16,10 +16,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// get one product
+// Gets one product. //
 router.get('/:id', async (req, res) => {
   try {
-    // Find a single product by its `id` and include its associated Category and Tag data
+    // Finds a single product by its `id` and includes its associated Category and Tag data. //
     const oneProduct = await Product.findByPk(req.params.id, {
       include: [Category, { model: Tag, through: ProductTag }],
     });
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// create new product
+// Creates a new product. //
 router.post('/', async (req, res) => {
   try {
     // Create a new product with the provided request body
@@ -64,7 +64,7 @@ router.post('/', async (req, res) => {
       };
     });
     
-    // Bulk create productTag associations
+    // Bulk creates productTag associations. //
     ProductTag.bulkCreate(productTagId)
       .then((productTagIds) => res.status(200).json(productTagIds))
       .catch((err) => {
@@ -72,12 +72,12 @@ router.post('/', async (req, res) => {
         res.status(400).json(err);
       });
   } else {
-    // If no product tags, just respond
+    // If no product tags, responds with status. //
     res.status(200).json(newProduct);
   }
 });
 
-// update product
+// Updates product, //
 router.put('/:id', (req, res) => {
   // Update product data
   Product.update(req.body, {
@@ -86,13 +86,13 @@ router.put('/:id', (req, res) => {
     },
   })
     .then((product) => {
-      // Find all associated tags from ProductTag
+      // Finds all associated tags from ProductTag. //
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
     .then((productTags) => {
-      // Get a list of current tag_ids
+      // Gets a list of current tag_ids. //
       const productTagIds = productTags.map(({ tag_id }) => tag_id);
-      // Create a filtered list of new tag_ids
+      // Creates a filtered list of new tag_ids. //
       const newProductTags = req.body.tagIds
         .filter((tag_id) => !productTagIds.includes(tag_id))
         .map((tag_id) => {
@@ -101,12 +101,12 @@ router.put('/:id', (req, res) => {
             tag_id,
           };
         });
-      // Figure out which ones to remove
+      // Figures out which ones to remove. //
       const productTagsToRemove = productTags
         .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
         .map(({ id }) => id);
 
-      // Run both actions: remove existing associations and create new ones
+      // Runs both actions: removes existing associations and creates new ones. //
       return Promise.all([
         ProductTag.destroy({ where: { id: productTagsToRemove } }),
         ProductTag.bulkCreate(newProductTags),
@@ -114,14 +114,14 @@ router.put('/:id', (req, res) => {
     })
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
+      // console.log(err): //
       res.status(400).json(err);
     });
 });
 
 router.delete('/:id', async (req, res) => {
   try {
-    // Delete a product by its `id`
+    // Deletes a product by its `id`. //
     const deleteProduct = await Product.destroy({
       where: {
         id: req.params.id,

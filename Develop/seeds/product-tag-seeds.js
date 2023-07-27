@@ -1,3 +1,4 @@
+// Defines the Product Tags functions and its data array and sets up the seeding data. //
 const { ProductTag } = require('../models');
 
 const productTagData = [

@@ -1,3 +1,4 @@
+// Defines the Categories functions and its data array and sets up the seeding data. //
 const { Category } = require('../models');
 
 const categoryData = [

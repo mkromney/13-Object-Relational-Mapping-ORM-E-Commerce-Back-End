@@ -34,7 +34,7 @@ Product.belongsToMany(Tag, {
 Tag.belongsToMany(Product, {
   through: ProductTag, // This indicates that the many-to-many relationship is handled through the "ProductTag" table.
   foreignKey: 'tag_id',
-   // This is the foreign key in the "ProductTag" table that references the "id" column in the "Tags" table. //
+   // This is the foreign key in the "Tags" table that references the "id" column in the "Tags" table. //
 });
 
 module.exports = {
