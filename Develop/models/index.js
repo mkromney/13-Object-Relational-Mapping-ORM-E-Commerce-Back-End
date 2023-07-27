@@ -26,14 +26,14 @@ Category.hasMany(Product, {
 // Products belongToMany Tags (through ProductTag). //
 Product.belongsToMany(Tag, {
   through: ProductTag, // This indicates that the many-to-many relationship is handled through the "ProductTag" table.
-  foreignKey: 'tag_id',
+  foreignKey: 'product_id',
    // This is the foreign key in the "ProductTag" table that references the "id" column in the "Products" table. //
 });
 
 // Tags belongToMany Products (through ProductTag). //
 Tag.belongsToMany(Product, {
   through: ProductTag, // This indicates that the many-to-many relationship is handled through the "ProductTag" table.
-  foreignKey: 'product_id',
+  foreignKey: 'tag_id',
    // This is the foreign key in the "ProductTag" table that references the "id" column in the "Tags" table. //
 });
 
