@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-This set of code is designed to work as a terminal- based front-end database navigator and editor.  
+This set of code is designed to work as a terminal- based front-end database navigator and editor. When a user accesses databases for an e-commerce API, the user can see the data, add data, edit data, and delete data.  
 
 Video Link of CLA:
 https://watch.screencastify.com/v/lEklln1bexR0u8Li1L9i
